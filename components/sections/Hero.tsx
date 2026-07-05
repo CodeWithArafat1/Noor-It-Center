@@ -2,13 +2,12 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Demo JSON Data
 const heroData = {
-  heading: "High Converting Web Solutions & IT Training",
   subheading:
-    "We design high-converting websites and provide expert training in essential computer skills to empower your career and business.",
+    "Hands-on training in MS Office, Adobe Photoshop, Web Development, and Digital Marketing — taught by friendly, experienced instructors who make learning easy.",
   buttons: {
     primary: { text: "Get A Free Quote", href: "#quote" },
     secondary: { text: "View Our Work", href: "#portfolio" }
@@ -46,6 +45,7 @@ const courseList = [
 
 export default function Hero() {
   const [active, setActive] = useState(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   // Auto-advance the slider every 5s
   useEffect(() => {
@@ -55,21 +55,42 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
-  const goTo = (index) => {
+  const goTo = (index: number) => {
     setActive(((index % instructors.length) + instructors.length) % instructors.length);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX;
+    const SWIPE_THRESHOLD = 40;
+
+    if (deltaX > SWIPE_THRESHOLD) {
+      goTo(active - 1); // swiped right -> previous
+    } else if (deltaX < -SWIPE_THRESHOLD) {
+      goTo(active + 1); // swiped left -> next
+    }
+    setTouchStartX(null);
   };
 
   const current = instructors[active];
 
   return (
-    <section className="relative w-full h-screen min-h-[800px] flex flex-col overflow-hidden bg-gradient-to-b from-white via-[#f0fdf6] to-[#a8e6cf] pt-28">
+    <section className="relative w-full min-h-fit lg:h-screen lg:min-h-[800px] flex flex-col overflow-hidden lg:overflow-hidden bg-gradient-to-b from-white via-[#f0fdf6] to-[#a8e6cf] pt-28 pb-6 lg:pb-0">
 
       {/* Main Hero Content */}
       <div className="flex-1 flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center w-full">
 
           {/* Left Column: Instructor Photo Slider */}
-          <div className="relative w-full max-w-sm mx-auto lg:mx-0 aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl group border-4 border-white/40 bg-emerald-800 bg-gradient-to-tr from-green-900 to-emerald-600 flex items-center justify-center">
+          <div
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            className="relative w-full max-w-sm mx-auto lg:mx-0 aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl group border-4 border-white/40 bg-emerald-800 bg-gradient-to-tr from-green-900 to-emerald-600 flex items-center justify-center touch-pan-y"
+          >
 
             {instructors.map((instructor, index) => (
               <div
@@ -89,12 +110,12 @@ export default function Hero() {
               </div>
             ))}
 
-            {/* Prev / Next Arrows */}
+            {/* Prev / Next Arrows — desktop only */}
             <button
               type="button"
               onClick={() => goTo(active - 1)}
               aria-label="Previous instructor"
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm flex items-center justify-center text-white transition-colors"
+              className="hidden lg:flex absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm items-center justify-center text-white transition-colors"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m15 18-6-6 6-6"></path>
@@ -104,7 +125,7 @@ export default function Hero() {
               type="button"
               onClick={() => goTo(active + 1)}
               aria-label="Next instructor"
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm flex items-center justify-center text-white transition-colors"
+              className="hidden lg:flex absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm items-center justify-center text-white transition-colors"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m9 18 6-6-6-6"></path>
@@ -112,7 +133,7 @@ export default function Hero() {
             </button>
 
             {/* Dots */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
               {instructors.map((instructor, index) => (
                 <button
                   key={instructor.name}
@@ -125,21 +146,34 @@ export default function Hero() {
                 />
               ))}
             </div>
+
+            {/* Mobile-only overlay: instructor info shown on top of the image (glass gradient effect) */}
+            <div className="absolute inset-x-0 bottom-0 lg:hidden h-2/5 backdrop-blur-md [mask-image:linear-gradient(to_top,black,transparent)]" />
+            <div className="absolute inset-x-0 bottom-0 lg:hidden bg-gradient-to-t from-black/50 via-black/15 to-transparent px-4 pt-16 pb-8">
+              <div key={current.name} className="animate-[fadeIn_0.5s_ease]">
+                <p className="font-bold text-white leading-tight drop-shadow-sm">{current.name}</p>
+                <p className="text-sm text-white/90 leading-tight drop-shadow-sm">{current.designation}</p>
+                <p className="text-sm text-[#5EEAB0] font-semibold leading-tight mt-0.5 drop-shadow-sm">
+                  Course: {current.course}
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Right Column: Content + Active Instructor Info */}
           <div className="max-w-2xl">
             <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-slate-900 leading-[1.1] tracking-tight">
-              {heroData.heading}
+              Learn <span className="text-[#00B87A]">New Skills</span>, Build a{" "}
+              <span className="text-[#00B87A]">Better Career</span>
             </h1>
             <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-lg">
               {heroData.subheading}
             </p>
 
-            {/* Active instructor card */}
+            {/* Active instructor card (desktop only — shown as overlay on the photo for mobile) */}
             <div
               key={current.name}
-              className="mt-8 flex items-center gap-4 bg-white/70 border border-slate-100 rounded-2xl px-5 py-4 shadow-sm w-fit max-w-full animate-[fadeIn_0.5s_ease]"
+              className="hidden lg:flex mt-8 items-center gap-4 bg-white/70 border border-slate-100 rounded-2xl px-5 py-4 shadow-sm w-fit max-w-full animate-[fadeIn_0.5s_ease]"
             >
               <div className="relative w-12 h-12 shrink-0 rounded-full overflow-hidden bg-gradient-to-tr from-green-900 to-emerald-600">
                 <Image
