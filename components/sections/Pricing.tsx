@@ -52,8 +52,9 @@ const pricingData = {
     {
       id: 3,
       name: "Basic Web Development",
-      price: "৳6,000",
-      duration: "3 Months",
+      price: "৳9,500",
+      originalPrice: "৳25,500",
+      duration: "6 Months",
       description: "Learn the fundamentals to build interactive web pages.",
       isPopular: false,
       features: [
@@ -68,8 +69,8 @@ const pricingData = {
     {
       id: 4,
       name: "Digital Marketing",
-      price: "৳7,000",
-      duration: "3 Months",
+      price: "৳10,000",
+      duration: "6 Months",
       description: "Strategic SEO and data-driven campaigns to grow any brand.",
       isPopular: false,
       features: [
@@ -241,10 +242,10 @@ export default function Pricing() {
         {/* Pricing Cards Carousel */}
         <div
           ref={scrollerRef}
-          className={`flex gap-6 md:gap-7 overflow-x-auto snap-x snap-mandatory pt-6 pb-6 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide touch-pan-x ${
+          className={`flex gap-6 md:gap-7 overflow-x-auto snap-x snap-mandatory pt-6 pb-6 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide ${
             isDragging ? "cursor-grabbing select-none" : "cursor-grab"
           }`}
-          style={{ scrollSnapType: "x mandatory" }}
+          style={{ scrollSnapType: "x mandatory", touchAction: "pan-x pan-y" }}
         >
           {pricingData.plans.map((plan) => (
             <div

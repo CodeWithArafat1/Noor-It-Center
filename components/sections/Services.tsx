@@ -9,16 +9,7 @@ const servicesData = {
     description: "Empowering you with essential tech skills and professional digital solutions to accelerate your career and business."
   },
   items: [
-    {
-      id: 1,
-      title: "Basic Web Development",
-      description: "Learn the fundamentals of HTML, CSS, and basic JavaScript to build your very first interactive web pages.",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>
-        </svg>
-      )
-    },
+
     {
       id: 2,
       title: "Computer Basic Application",
@@ -38,6 +29,15 @@ const servicesData = {
           <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline>
         </svg>
       )
+    },    {
+      id: 1,
+      title: "Basic Web Development",
+      description: "Learn the fundamentals of HTML, CSS, and basic JavaScript to build your very first interactive web pages.",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+      )
     },
     {
       id: 4,
@@ -49,26 +49,7 @@ const servicesData = {
         </svg>
       )
     },
-    {
-      id: 5,
-      title: "Graphic Design",
-      description: "Creative visual design training using industry-standard tools like Adobe Photoshop and Illustrator.",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle>
-        </svg>
-      )
-    },
-    {
-      id: 6,
-      title: "Website Development",
-      description: "End-to-end professional web development services tailored to create dynamic, high-performing websites.",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line>
-        </svg>
-      )
-    }
+   
   ]
 };
 
