@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Demo JSON Data for the Team
 const teamData = {
@@ -12,34 +13,26 @@ const teamData = {
   members: [
     {
       id: 1,
-      name: "ARAFAT NILL",
-      role: "Founder & Lead Developer",
-      // Using background colors to match your reference images
-      // You can replace these with actual Image tags later
-      bgClass: "bg-[#8da8c1]", 
+      name: "ROHAN HAFEJ",
+      role: "Founder & Leader",
+      image: "/instructors/rohan.png",
       socials: { linkedin: "#", instagram: "#", twitter: "#" }
     },
     {
       id: 2,
-      name: "NAZMUL HASAN NAHIN",
+      name: "JOY AHMED",
       role: "Co-Founder & Business Development",
-      bgClass: "bg-[#30b593]", 
+      image: "/instructors/joy.jpg",
       socials: { linkedin: "#", instagram: "#", twitter: "#" }
     },
     {
       id: 3,
-      name: "JOHN DOE", // Placeholder name
+      name: "ARAFAT NILL", // Placeholder name
       role: "Senior Graphic Designer", // Placeholder role
-      bgClass: "bg-[#1f72df]", 
+      image: "/instructors/nill.jpg",
       socials: { linkedin: "#", instagram: "#", twitter: "#" }
     },
-    {
-      id: 4,
-      name: "ALEX SMITH", // Placeholder name
-      role: "Digital Marketing Lead", // Placeholder role
-      bgClass: "bg-[#5eb6ec]", 
-      socials: { linkedin: "#", instagram: "#", twitter: "#" }
-    }
+   
   ]
 };
 
@@ -50,7 +43,7 @@ export default function OurTeam() {
   return (
     <section id="team" className="py-24 bg-white relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-[#00B87A] text-sm font-bold tracking-[0.2em] uppercase mb-3">
@@ -70,28 +63,30 @@ export default function OurTeam() {
               <div
                 key={member.id}
                 onMouseEnter={() => setActiveIndex(index)}
-                className={`relative h-full rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-500 ease-in-out ${member.bgClass} ${
+                onClick={() => setActiveIndex(index)}
+                className={`relative h-full rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-500 ease-in-out bg-slate-800 ${
                   isActive ? "w-[65%] md:w-[450px]" : "w-[25%] md:w-[130px]"
                 }`}
               >
-                {/* 
-                  Image Placeholder:
-                  Replace this inner div with your <Image /> component once you have the assets. 
-                */}
-                <div className="absolute inset-0 w-full h-full flex items-end justify-center pb-12">
-                   {/* Dummy silhouette to represent the person */}
-                   <div className="w-3/4 h-3/4 bg-black/10 rounded-t-full"></div>
-                </div>
+                {/* Team member photo */}
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  sizes="(max-width: 768px) 65vw, 450px"
+                  className="object-cover"
+                  priority={index === 0}
+                />
 
-                {/* Bottom Gradient Overlay (Only visible when active to make text readable) */}
-                <div 
-                  className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500 ${
-                    isActive ? "opacity-100" : "opacity-0"
+                {/* Bottom Gradient Overlay (always present for legibility, deeper when active) */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent transition-opacity duration-500 ${
+                    isActive ? "opacity-100" : "opacity-70"
                   }`}
                 ></div>
 
                 {/* Team Member Info */}
-                <div 
+                <div
                   className={`absolute bottom-6 left-6 right-6 transition-all duration-500 ease-in-out ${
                     isActive ? "translate-y-0 opacity-100 delay-100" : "translate-y-10 opacity-0"
                   }`}
