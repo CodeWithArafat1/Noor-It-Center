@@ -21,11 +21,12 @@ const portfolioData = {
       year: "2024",
       image: "/portfolio/3.jpg",
     },
+
     {
       id: 3,
       title: "MM Glow",
-      year: "2026",
-      image: "/portfolio/2.jpg",
+      year: "2025",
+      image: "/portfolio/4.jpg",
     },
   ],
 };
