@@ -32,7 +32,7 @@ const pricingData = {
         "Internet Browsing",
       ],
       buttonText: "Enroll Now",
-      buttonLink: "#enroll",
+      buttonLink: "https://wa.link/ebisw6",
     },
     {
       id: 2,
@@ -61,12 +61,12 @@ const pricingData = {
         "All the topic will be Reviewed Again"
       ],
       buttonText: "Enroll Now",
-      buttonLink: "#enroll",
+      buttonLink: "https://wa.link/4fnphu",
     },
 
     {
       id: 3,
-      name: "Basic Web Development",
+      name: "Web Development",
       price: "৳15,000",
       originalPrice: "৳30,000",
       duration: "10 Months",
@@ -109,7 +109,7 @@ const pricingData = {
         "Career Guideline & Support",
       ],
       buttonText: "Enroll Now",
-      buttonLink: "#enroll",
+      buttonLink: "https://wa.link/6ksxyk",
     },
     {
       id: 4,
@@ -138,7 +138,7 @@ const pricingData = {
         "News Site Black Hat",
       ],
       buttonText: "Enroll Now",
-      buttonLink: "#enroll",
+      buttonLink: "https://wa.link/zzjwvv",
     },
   ],
 };
