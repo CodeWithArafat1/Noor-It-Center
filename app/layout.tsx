@@ -1,13 +1,24 @@
 // src/app/layout.tsx
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 // Configure the primary font
-const inter = Inter({ subsets: ["latin"] });
+import { Hind_Siliguri, Inter } from "next/font/google";
+
+export const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+export const hind = Hind_Siliguri({
+  subsets: ["bengali"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-bangla",
+});
 
 // Set up default SEO metadata for Noor It Center
 export const metadata: Metadata = {
@@ -22,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} min-h-screen bg-white text-slate-900 antialiased`}>
+      <body className={`${inter.variable} ${hind.variable} min-h-screen bg-white text-slate-900 antialiased`}>
        <Navbar/>
         
         <main className="flex flex-col w-full min-h-screen">

@@ -6,7 +6,9 @@ import React, { useState } from 'react';
 const faqData = {
   sectionMeta: {
     tagline: "FAQS",
-    title: "Got Questions? We've Got Answers",
+    title: <>
+   Got Questions? <span className="text-[#00B87A]">We&apos;ve Got Answers</span>
+    </>,
     description: "Everything you need to know about our IT courses, certifications, and enrollment process."
   },
   questions: [

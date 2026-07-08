@@ -7,63 +7,15 @@ import Link from "next/link";
 const pricingData = {
   sectionMeta: {
     tagline: "PRICING PLANS",
-    title: "Our Services & Courses",
+    title: (
+      <>
+        Our Services<span className="text-[#00B87A]"> & Courses</span>
+      </>
+    ),
     description:
       "Affordable, high-quality IT training and digital solutions tailored for your success.",
   },
   plans: [
-    {
-      id: 1,
-      name: "Computer Basic Application",
-      price: "৳4,500",
-      originalPrice: "৳5,000",
-      duration: "3 Months",
-      description:
-        "Essential office skills for everyday professional and personal use.",
-      isPopular: false,
-      features: [
-        "Introduction to File Manager",
-        "MS Word",
-        "MS Excel Worksheet",
-        "PowerPoint",
-        "Email",
-        "Bangla Typing",
-        "Computer Hardware",
-        "Internet Browsing",
-      ],
-      buttonText: "Enroll Now",
-      buttonLink: "https://wa.link/ebisw6",
-    },
-    {
-      id: 2,
-      name: "Computer Advance Application",
-      price: "৳6,000",
-      originalPrice: "৳6,500",
-      duration: "6 Months",
-      description:
-        "Dive deeper into complex applications and database management.",
-      isPopular: true,
-      features: [
-        "Introduction to File Manager",
-        "MS Word",
-        "MS Excel Worksheet",
-        "PowerPoint",
-        "Email",
-        "Bangla Typing",
-        "Computer Hardware",
-        "Internet Browsing",
-        "Google Meet",
-        "Google Sheet",
-        "Google Slides",
-        "Google Docs",
-        "Google From",
-        "Pinter Use",
-        "All the topic will be Reviewed Again"
-      ],
-      buttonText: "Enroll Now",
-      buttonLink: "https://wa.link/4fnphu",
-    },
-
     {
       id: 3,
       name: "Web Development",
@@ -139,6 +91,58 @@ const pricingData = {
       ],
       buttonText: "Enroll Now",
       buttonLink: "https://wa.link/zzjwvv",
+    },
+    {
+      id: 2,
+      name: "Computer Advance Application",
+      price: "৳6,000",
+      originalPrice: "৳6,500",
+      duration: "6 Months",
+      description:
+        "Dive deeper into complex applications and database management.",
+      isPopular: true,
+      features: [
+        "Introduction to File Manager",
+        "MS Word",
+        "MS Excel Worksheet",
+        "PowerPoint",
+        "Email",
+        "Bangla Typing",
+        "Computer Hardware",
+        "Internet Browsing",
+        "Google Meet",
+        "Google Sheet",
+        "Google Slides",
+        "Google Docs",
+        "Google From",
+        "Pinter Use",
+        "All the topic will be Reviewed Again",
+      ],
+      buttonText: "Enroll Now",
+      buttonLink: "https://wa.link/4fnphu",
+    },
+
+    {
+      id: 1,
+      name: "Computer Basic Application",
+      price: "৳4,500",
+      originalPrice: "৳5,000",
+      duration: "3 Months",
+      description:
+        "Essential office skills for everyday professional and personal use.",
+      isPopular: false,
+      features: [
+        "Introduction to File Manager",
+        "MS Word",
+        "MS Excel Worksheet",
+        "PowerPoint",
+        "Email",
+        "Bangla Typing",
+        "Computer Hardware",
+        "Internet Browsing",
+      ],
+      buttonText: "Enroll Now",
+      buttonLink: "https://wa.link/ebisw6",
     },
   ],
 };

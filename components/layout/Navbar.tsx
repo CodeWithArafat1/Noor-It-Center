@@ -75,11 +75,11 @@ export default function Navbar() {
           <Link href="#services" className={getLinkClasses('services')}>
             Services
           </Link>
-          <Link href="#portfolio" className={getLinkClasses('portfolio')}>
-            Portfolio
-          </Link>
           <Link href="#pricing" className={getLinkClasses('pricing')}>
             Pricing
+          </Link>
+          <Link href="#portfolio" className={getLinkClasses('portfolio')}>
+            Portfolio
           </Link>
           <Link href="#about" className={getLinkClasses('about')}>
             About

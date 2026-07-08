@@ -4,7 +4,10 @@ import React from 'react';
 const whyChooseUsData = {
   sectionMeta: {
     tagline: "THE DIFFERENCE",
-    title: "Why Choose Noor IT Center",
+    title: <>
+   Why Choose <span className="text-[#00B87A]">Noor IT Center</span>
+    </>
+    
   },
   benefits: [
     {

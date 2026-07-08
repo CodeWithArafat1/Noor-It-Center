@@ -47,8 +47,8 @@ export default function Contact() {
             
             {/* Left Column: Content */}
             <div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
-                Ready to Accelerate Your Tech Career?
+              <h2 className="text-3xl md:text-xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
+                Ready to Accelerate Your <span className="text-[#00B87A]">Tech Career?</span>
               </h2>
               <p className="text-slate-700 text-lg mb-10 leading-relaxed">
                 Let's discuss which IT training course or digital solution is the perfect fit for your goals and business growth.
@@ -59,10 +59,10 @@ export default function Contact() {
                 <h4 className="font-bold text-slate-900 mb-2">Book a Free 30-Minute Consultation</h4>
                 <p className="text-sm text-slate-600 mb-4">
                   Get expert guidance and a custom strategy for your career. <br/>
-                  📞 <a href="tel:+8801234567890" className="hover:text-[#00B87A] transition-colors">+880 1234 567 890</a> • ⏱ Response within 2 hours
+                  📞 <a href="tel:+8801747468626" className="hover:text-[#00B87A] transition-colors">+880 01747468626</a> • ⏱ Response within 2 hours
                 </p>
                 <Link 
-                  href="https://wa.me/1234567890" 
+                  href="https://wa.me/01747468626" 
                   target="_blank"
                   className="inline-flex items-center gap-2 bg-[#00B87A] hover:bg-[#009f6b] text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-md shadow-[#00B87A]/20"
                 >

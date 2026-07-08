@@ -1,12 +1,17 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 // Demo JSON Data for Portfolio Cases
 const portfolioData = {
   sectionMeta: {
     tagline: "OUR RECENT WORK",
-    title: "Our Portfolio",
+
+    title: (
+      <>
+        Our <span className="text-[#00B87A]">Portfolio</span>
+      </>
+    ),
   },
   cases: [
     {
@@ -35,7 +40,6 @@ export default function Portfolio() {
   return (
     <section id="portfolio" className="py-24 bg-white relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-[#00B87A] text-sm font-bold tracking-[0.2em] uppercase mb-3">
@@ -73,7 +77,6 @@ export default function Portfolio() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

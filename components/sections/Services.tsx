@@ -4,53 +4,71 @@ import Link from 'next/link';
 // Updated JSON Data for Noor IT Center Services & Courses
 const servicesData = {
   sectionMeta: {
-    tagline: "WHAT WE DO",
-    title: "Our Services & Courses",
-    description: "Empowering you with essential tech skills and professional digital solutions to accelerate your career and business."
+    tagline: "OUR COURSES",
+    title:(
+      <>
+        Popular IT <span className="text-[#00B87A]">Training Courses</span>
+      </>
+    ),
+    description:
+      "Build your career with expert instructors, live practical classes, and real-world projects designed for jobs and freelancing.",
   },
+
   items: [
+    {
+      id: 1,
+      title: "Computer Basic Application",
+      description:
+        "Learn computer fundamentals from scratch, including MS Word, Excel, PowerPoint, Internet, Email, and Bangla & English typing for everyday office work.",
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+          <line x1="8" y1="21" x2="16" y2="21"></line>
+          <line x1="12" y1="17" x2="12" y2="21"></line>
+        </svg>
+      ),
+    },
 
     {
       id: 2,
-      title: "Computer Basic Application",
-      description: "Master essential office software including MS Word, Excel, and PowerPoint for seamless daily professional use.",
+      title: "Computer Advance Application",
+      description:
+        "Master Advanced MS Office, Google Workspace, PDF tools, office management, and professional computer skills to become job-ready.",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
         </svg>
-      )
+      ),
     },
+
     {
       id: 3,
-      title: "Computer Advance Application",
-      description: "Dive deeper into complex computer applications, database management, and advanced productivity tools.",
+      title: "Full Stack Web Development",
+      description:
+        "Learn HTML, CSS, JavaScript, React, Node.js, Express.js, and MongoDB. Build real-world projects and become ready for jobs and freelancing.",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline>
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
         </svg>
-      )
-    },    {
-      id: 1,
-      title: "Basic Web Development",
-      description: "Learn the fundamentals of HTML, CSS, and basic JavaScript to build your very first interactive web pages.",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>
-        </svg>
-      )
+      ),
     },
+
     {
       id: 4,
       title: "Digital Marketing",
-      description: "Strategic SEO, social media marketing, and data-driven campaigns to grow brands and maximize online reach.",
+      description:
+        "Learn Facebook Marketing, Google Ads, SEO, Social Media Marketing, Affiliate Marketing, and hands-on strategies through real projects.",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M11 20.33V22h2v-1.67A9.03 9.03 0 0 0 21 12h-1.67A7.36 7.36 0 0 1 12 19.33 7.36 7.36 0 0 1 4.67 12H3a9.03 9.03 0 0 0 8 8.33z"></path><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+          <path d="M11 20.33V22h2v-1.67A9.03 9.03 0 0 0 21 12h-1.67A7.36 7.36 0 0 1 12 19.33 7.36 7.36 0 0 1 4.67 12H3a9.03 9.03 0 0 0 8 8.33z"></path>
+          <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
         </svg>
-      )
+      ),
     },
-   
-  ]
+  ],
 };
 
 export default function Services() {
@@ -100,7 +118,7 @@ export default function Services() {
 
       {/* Floating WhatsApp Button */}
       <Link 
-        href="https://wa.me/1234567890" 
+        href="https://wa.me/+8801747468626" 
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-8 right-8 w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/40 hover:scale-110 transition-transform duration-300 z-50"

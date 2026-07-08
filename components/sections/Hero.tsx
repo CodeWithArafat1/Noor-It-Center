@@ -23,16 +23,16 @@ const instructors = [
     image: "/instructors/nill.jpg",
   },
   {
+    name: "Rohan Hafej",
+    designation: "CEO",
+    course: "Digital Marketing",
+    image: "/instructors/rohan.png",
+  },
+  {
     name: "Joy Ahmed",
     designation: "Instructor",
     course: "Computer Office Application",
     image: "/instructors/joy.jpg",
-  },
-  {
-    name: "Rohan Hafej",
-    designation: "Marketing Trainer",
-    course: "Digital Marketing",
-    image: "/instructors/rohan.png",
   },
 ];
 
@@ -42,6 +42,86 @@ const courseList = [
   "Adobe Photoshop", "Adobe Illustrator", "Web Development",
   "Digital Marketing", "Data Entry"
 ];
+
+// 3 rotating headline lines about the institute — each line is broken into
+// segments so specific phrases can be highlighted in green while typing.
+const titleLines = [
+  [
+    { text: "Learn ", highlight: false },
+    { text: "New Skills", highlight: true },
+    { text: ", Build a ", highlight: false },
+    { text: "Better Career", highlight: true },
+  ],
+  [
+    { text: "Your ", highlight: false },
+    { text: "Trusted Institute", highlight: true },
+    { text: " for ", highlight: false },
+    { text: "IT Excellence", highlight: true },
+  ],
+  [
+    { text: "Turning Beginners into ", highlight: false },
+    { text: "Skilled Professionals", highlight: true },
+  ],
+];
+
+function TypewriterTitle() {
+  const [lineIndex, setLineIndex] = useState(0);
+  const [charLength, setCharLength] = useState(0);
+  const [phase, setPhase] = useState<"typing" | "pausing" | "deleting">("typing");
+
+  const currentLine = titleLines[lineIndex];
+  const currentLineText = currentLine.map((s) => s.text).join("");
+
+  useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>;
+
+    if (phase === "typing") {
+      if (charLength < currentLineText.length) {
+        timeout = setTimeout(() => {
+          setCharLength((prev) => prev + 1);
+        }, 40 + Math.random() * 35);
+      } else {
+        timeout = setTimeout(() => setPhase("pausing"), 1800);
+      }
+    } else if (phase === "pausing") {
+      timeout = setTimeout(() => setPhase("deleting"), 400);
+    } else if (phase === "deleting") {
+      if (charLength > 0) {
+        timeout = setTimeout(() => {
+          setCharLength((prev) => prev - 1);
+        }, 18 + Math.random() * 14);
+      } else {
+        timeout = setTimeout(() => {
+          setLineIndex((prev) => (prev + 1) % titleLines.length);
+          setPhase("typing");
+        }, 300);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [phase, charLength, currentLineText.length]);
+
+  // Slice the segments according to how many characters are currently "typed"
+  let remaining = charLength;
+  const rendered = currentLine.map((segment, i) => {
+    const sliceLength = Math.max(0, Math.min(segment.text.length, remaining));
+    remaining -= segment.text.length;
+    const visibleText = segment.text.slice(0, sliceLength);
+    if (!visibleText) return null;
+    return segment.highlight ? (
+      <span key={i} className="text-[#00B87A]">{visibleText}</span>
+    ) : (
+      <React.Fragment key={i}>{visibleText}</React.Fragment>
+    );
+  });
+
+  return (
+    <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-slate-900 leading-[1.1] tracking-tight min-h-[2.2em] sm:min-h-[2.2em]">
+      {rendered}
+      <span className="inline-block w-[2px] sm:w-[3px] h-[1em] bg-green-500 ml-1 align-middle animate-[blink_1s_step-end_infinite]" />
+    </h1>
+  );
+}
 
 export default function Hero() {
   const [active, setActive] = useState(0);
@@ -162,10 +242,7 @@ export default function Hero() {
 
           {/* Right Column: Content + Active Instructor Info */}
           <div className="max-w-2xl">
-            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-slate-900 leading-[1.1] tracking-tight">
-              Learn <span className="text-[#00B87A]">New Skills</span>, Build a{" "}
-              <span className="text-[#00B87A]">Better Career</span>
-            </h1>
+            <TypewriterTitle />
             <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-lg">
               {heroData.subheading}
             </p>
@@ -268,6 +345,10 @@ export default function Hero() {
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(6px); }
           to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
         }
       `}} />
     </section>

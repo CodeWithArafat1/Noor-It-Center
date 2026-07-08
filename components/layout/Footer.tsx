@@ -65,13 +65,13 @@ export default function Footer() {
             <h4 className="text-slate-900 font-bold mb-6">Contact</h4>
             <ul className="space-y-4 mb-8">
               <li>
-                <a href="mailto:contact@nooritcenter.com" className="text-slate-500 hover:text-[#00B87A] text-sm transition-colors flex items-center gap-2">
-                  contact@nooritcenter.com
+                <a href="nooritcenter2024@gmail.com" className="text-slate-500 hover:text-[#00B87A] text-sm transition-colors flex items-center gap-2">
+                  nooritcenter2024@gmail.com
                 </a>
               </li>
               <li>
                 <a href="tel:+8801234567890" className="text-slate-500 hover:text-[#00B87A] text-sm transition-colors flex items-center gap-2">
-                  +880 1234 567 890
+                  +880 01747-468626
                 </a>
               </li>
               <li className="text-slate-500 text-sm">
