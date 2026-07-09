@@ -62,7 +62,7 @@ export default function Contact() {
                   📞 <a href="tel:+8801747468626" className="hover:text-[#00B87A] transition-colors">+880 01747468626</a> • ⏱ Response within 2 hours
                 </p>
                 <Link 
-                  href="https://wa.me/01747468626" 
+                  href="https://wa.me/+8801747468626" 
                   target="_blank"
                   className="inline-flex items-center gap-2 bg-[#00B87A] hover:bg-[#009f6b] text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-md shadow-[#00B87A]/20"
                 >
